@@ -1,6 +1,2 @@
 flask
-twilio
-google-genai
-streamlit
-pandas
 gunicorn
