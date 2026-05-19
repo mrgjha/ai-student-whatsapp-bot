@@ -67,6 +67,10 @@ def whatsapp():
             ""
         )
 
+        # ==========================================
+        # CLEAN PHONE NUMBER
+        # ==========================================
+
         sender = sender.replace(
             "whatsapp:+91",
             ""
@@ -155,6 +159,14 @@ def whatsapp():
                 f"{student_id}."
             )
 
+        elif "name" in incoming_msg \
+        or "who am i" in incoming_msg:
+
+            reply = (
+                f"Your name is "
+                f"{name}."
+            )
+
         elif "address" in incoming_msg \
         or "live" in incoming_msg:
 
@@ -208,5 +220,7 @@ def whatsapp():
         return str(resp)
 
     except Exception as e:
+
+        print("ERROR:", e)
 
         return str(e), 500
