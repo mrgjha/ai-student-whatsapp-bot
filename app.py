@@ -1,4 +1,6 @@
 from flask import Flask
+from twilio.twiml.messaging_response import MessagingResponse
+from flask import request
 
 app = Flask(__name__)
 
@@ -17,4 +19,17 @@ def health():
 @app.route("/whatsapp", methods=["GET", "POST"])
 def whatsapp():
 
-    return "WhatsApp webhook working"
+    incoming_msg = request.form.get(
+        "Body",
+        ""
+    )
+
+    resp = MessagingResponse()
+
+    msg = resp.message()
+
+    msg.body(
+        f"You said: {incoming_msg}"
+    )
+
+    return str(resp)
