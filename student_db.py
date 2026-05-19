@@ -4,7 +4,9 @@ import sqlite3
 # CONNECT DATABASE
 # ==========================================
 
-conn = sqlite3.connect("students.db")
+conn = sqlite3.connect(
+    "students.db"
+)
 
 cur = conn.cursor()
 
@@ -47,7 +49,7 @@ CREATE TABLE IF NOT EXISTS chats (
 """)
 
 # ==========================================
-# INSERT STUDENT DATA
+# SAMPLE STUDENT
 # ==========================================
 
 students = [
@@ -57,13 +59,13 @@ students = [
         "Gyanendra Jha",
         "8951539438",
         "Mithapur",
-        "Pending"
+        "Paid"
     )
 
 ]
 
 # ==========================================
-# INSERT OR UPDATE STUDENTS
+# INSERT SAMPLE DATA
 # ==========================================
 
 cur.executemany(
@@ -74,16 +76,8 @@ cur.executemany(
     students
 )
 
-# ==========================================
-# SAVE CHANGES
-# ==========================================
-
 conn.commit()
 
-print("Database and tables created successfully")
-
-# ==========================================
-# CLOSE CONNECTION
-# ==========================================
+print("Database created successfully")
 
 conn.close()
