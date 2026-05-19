@@ -6,9 +6,9 @@ from google import genai
 # ==========================================
 # GEMINI CLIENT
 # ==========================================
-
+import os
 client = genai.Client(
-    api_key="AIzaSyD0DMHll6_puy8RrkULkbzlWjIlevYuMgo"
+    api_key=os.getenv("GEMINI_API_KEY")
 )
 
 # ==========================================
